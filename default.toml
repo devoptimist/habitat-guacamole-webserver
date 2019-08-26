@@ -1,0 +1,18 @@
+worker_processes = "auto"
+http_port = 80
+https_port = 443
+
+[events]
+worker_connections = 512
+
+[http]
+sendfile = "on"
+tcp_nopush = "on"
+tcp_nodelay = "on"
+keepalive_timeout = 60
+
+# server_hostname = ""
+
+# [ssl]
+# crt = ""
+# key = ""

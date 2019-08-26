@@ -1,0 +1,14 @@
+#!{{pkgPathFor "core/bash"}}/bin/bash -x
+
+exec 2>&1
+
+{{#if cfg.ssl.crt}}
+openssl dhparam -dsaparam -out {{pkg.svc_var_path}}/dhparam.pem 4096 
+
+cat << EOF > {{pkg.svc_var_path}}/client.crt
+{{cfg.ssl.crt}}
+EOF
+cat << EOF > {{pkg.svc_var_path}}/client.key
+{{cfg.ssl.key}}
+EOF
+{{/if}}
